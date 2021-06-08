@@ -1,0 +1,85 @@
+plugins {
+    id "idea"
+    id "groovy"
+    id "com.github.erdi.webdriver-binaries" version "2.2"
+    id "com.github.erdi.idea-base" version "2.2"
+}
+
+ext {
+    // The drivers we want to use
+    drivers = ["firefox", "chrome", "chromeHeadless"]
+
+    ext {
+        gebVersion = '4.1'
+        seleniumVersion = '3.14.0'
+        chromeDriverVersion = '91.0.4472.19'
+        geckoDriverVersion = '0.26.0'
+        testNGVersion = '6.14.2'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // If using Spock, need to depend on geb-spock
+    testCompile "org.gebish:geb-spock:$gebVersion"
+    testCompile group: 'com.twilio.sdk', name: 'twilio', version: '8.8.0'
+    implementation group: 'org.quartz-scheduler', name: 'quartz', version: '2.0.2'
+    testCompile("org.spockframework:spock-core:1.3-groovy-2.5") {
+        exclude group: "org.codehaus.groovy"
+    }
+    testCompile "org.testng:testng:$testNGVersion"
+
+    // If using JUnit, need to depend on geb-junit (3 or 4)
+    testCompile "org.gebish:geb-junit4:$gebVersion"
+
+    // Drivers
+    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+
+}
+
+webdriverBinaries {
+    chromedriver {
+        version = chromeDriverVersion
+        fallbackTo32Bit = true
+    }
+    geckodriver geckoDriverVersion
+}
+
+drivers.each { driver ->
+    task "${driver}Test"(type: Test) {
+        group JavaBasePlugin.VERIFICATION_GROUP
+
+        outputs.upToDateWhen { false }  // Always run tests
+
+        systemProperty "geb.build.reportsDir", reporting.file("geb/$name")
+        systemProperty "geb.env", driver
+
+//        useTestNG() {
+//            useDefaultListeners = true
+//            options.suites ""
+//            systemProperties System.getProperties()
+ //       }
+
+    }
+}
+
+test {
+    dependsOn drivers.collect { tasks["${it}Test"] }
+    enabled = false
+}
+
+tasks.withType(Test) {
+    maxHeapSize = "1g"
+    jvmArgs '-XX:MaxMetaspaceSize=128m'
+    testLogging {
+        exceptionFormat = 'full'
+    }
+}
+
+tasks.withType(GroovyCompile) {
+    groovyOptions.forkOptions.memoryMaximumSize = '256m'
+}

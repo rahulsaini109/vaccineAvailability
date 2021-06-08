@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="testCase.CowinSpec" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-07T07:56:46" hostname="DDC2-L-G01FPLH" time="44.524">
+  <properties/>
+  <testcase name="check vaccine availability at my PinCode" classname="testCase.CowinSpec" time="44.524"/>
+  <system-out><![CDATA[COVISHIELD is available at GBSSS S P ROAD COVISHIELD 2 center
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 91.0.4472.19 (1bf021f248676a0b2ab3ee0561d83a59e424c23e-refs/branch-heads/4472@{#288}) on port 36739
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+Jun 07, 2021 1:26:53 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+]]></system-err>
+</testsuite>
