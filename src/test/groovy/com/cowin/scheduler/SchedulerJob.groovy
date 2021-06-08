@@ -1,4 +1,4 @@
-package com.cowin.sceduler
+package com.cowin.scheduler
 
 import com.cowin.testCase.CowinTest
 import org.quartz.JobBuilder;
