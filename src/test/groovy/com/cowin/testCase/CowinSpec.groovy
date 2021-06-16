@@ -17,22 +17,27 @@ class CowinSpec extends GebSpec {
         cp.searchByPIn.click()
 
         and:
-        cp.pinTextBox.value("110041")
+        cp.pinTextBox.value(pincode)
 
         then:
         cp.searchButton.click()
 
 
         then:
-        if (cp.searchLocationAndVaccine("COVISHIELD") != null) {
+        if (cp.searchLocationAndVaccine() != null) {
             Twilio.init(
                     "AC1ea0abaa384d67b14a8d4fdd6ee9b47e", "41de078223c54a32a102ecf51e05a2c0");
             Message.creator(
                     new PhoneNumber("+91-9871419150"),
                     new PhoneNumber("+15038226838"),
-                    "Available Vaccine center :" + cp.searchLocationAndVaccine("COVISHIELD"))
+                    "Available Vaccine center :" + cp.searchLocationAndVaccine())
                     .create();
         } else println "No Vaccine Found"
 
+        where:
+        phoneNumber | pincode
+        "9871419150"  | "110065"
+        "7755943346"  | "110027"
+        "7755943346"  | "110026"
     }
 }
