@@ -25,21 +25,31 @@ class CowinHomePage extends Page{
             }
 
 
-    String searchLocationAndVaccine()
+    ArrayList<String> searchLocationAndVaccine()
     {
+        ArrayList<String> message = new ArrayList<String>()
         for(int i=0;i<numberOfAddressLine.size();i++)
         {
                 for(int d=0;d<=slotAvailable(i).size();d++)
                 {
-                        if(dose1(i,d).isDisplayed())
-                        {
+                    if(!addressLabel(i).text().contains("PAID"))
+                    {
+                        if (dose1(i, d).isDisplayed()) {
 
-                            return vaccineAvailable(i, d).text() + " is available at " + addressLabel(i).text() + " center with " + dose1(i, d).text() + " and " + dose2(i, d).text() + " on date " + date(d).text()
+                            message.add(vaccineAvailable(i, d).text() + " is available at " + addressLabel(i).text() + " center with " + dose1(i, d).text() + " and " + dose2(i, d).text() + " on date " + date(d).text())
 
                         }
+                        if(message.size()==2){
+                            return message
+                        }
+                    }
 
                 }
 
+
+        }
+        if(message.size()==1){
+            return message
         }
 
     }
