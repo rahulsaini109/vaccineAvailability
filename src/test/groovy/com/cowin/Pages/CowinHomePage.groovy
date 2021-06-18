@@ -48,7 +48,7 @@ class CowinHomePage extends Page{
 
 
         }
-        if(message.size()==1){
+        if(message.size()!=null){
             return message
         }
 

@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cowin.testCase.CowinSpec" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-08T05:14:16" hostname="DDC2-L-G01FPLH" time="13.212">
+<testsuite name="com.cowin.testCase.CowinSpec" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-06-16T07:47:18" hostname="DDC2-L-G01FPLH" time="8.809">
   <properties/>
-  <testcase name="check vaccine availabilty at my PinCode" classname="com.cowin.testCase.CowinSpec" time="13.212"/>
-  <system-out><![CDATA[COVISHIELD is available at GGSSS NO.1 EAST OF KAILASH center
-]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 91.0.4472.19 (1bf021f248676a0b2ab3ee0561d83a59e424c23e-refs/branch-heads/4472@{#288}) on port 47619
+  <testcase name="check vaccine availabilty at my PinCode" classname="com.cowin.testCase.CowinSpec" time="8.809">
+    <failure message="Condition failed with Exception:&#10;&#10;println cp.searchLocationAndVaccine()&#10;        |  |&#10;        |  java.lang.NumberFormatException: For input string: &quot;D1&quot;&#10;        |  &#9;at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)&#10;        |  &#9;at java.lang.Integer.parseInt(Integer.java:580)&#10;        |  &#9;at java.lang.Integer.valueOf(Integer.java:766)&#10;        |  &#9;at com.cowin.Pages.CowinHomePage.searchLocationAndVaccine(CowinHomePage.groovy:36)&#10;        |  &#9;at com.cowin.testCase.CowinSpec.check vaccine availabilty at my PinCode(CowinSpec.groovy:27)&#10;        com.cowin.Pages.CowinHomePage&#10;" type="org.spockframework.runtime.ConditionFailedWithExceptionError">Condition failed with Exception:
+
+println cp.searchLocationAndVaccine()
+        |  |
+        |  java.lang.NumberFormatException: For input string: &quot;D1&quot;
+        |  	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+        |  	at java.lang.Integer.parseInt(Integer.java:580)
+        |  	at java.lang.Integer.valueOf(Integer.java:766)
+        |  	at com.cowin.Pages.CowinHomePage.searchLocationAndVaccine(CowinHomePage.groovy:36)
+        |  	at com.cowin.testCase.CowinSpec.check vaccine availabilty at my PinCode(CowinSpec.groovy:27)
+        com.cowin.Pages.CowinHomePage
+
+	at com.cowin.testCase.CowinSpec.check vaccine availabilty at my PinCode(CowinSpec.groovy:27)
+Caused by: java.lang.NumberFormatException: For input string: &quot;D1&quot;
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.valueOf(Integer.java:766)
+	at com.cowin.Pages.CowinHomePage.searchLocationAndVaccine(CowinHomePage.groovy:36)
+	... 1 more
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 91.0.4472.19 (1bf021f248676a0b2ab3ee0561d83a59e424c23e-refs/branch-heads/4472@{#288}) on port 8291
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-Jun 08, 2021 10:44:21 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+Jun 16, 2021 1:17:23 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
 ]]></system-err>
 </testsuite>

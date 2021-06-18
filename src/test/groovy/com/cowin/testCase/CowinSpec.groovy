@@ -24,15 +24,16 @@ class CowinSpec extends GebSpec {
 
 
         then:
-        int numberOfMessages=cp.searchLocationAndVaccine().size()
-        if(numberOfMessages!=0) {
+ArrayList<String> message=cp.searchLocationAndVaccine()
+        if(message!=null) {
+            int numberOfMessages=message.size()
             for (int i = 0; i <numberOfMessages ; i++) {
                         Twilio.init(
                     "AC1ea0abaa384d67b14a8d4fdd6ee9b47e", "41de078223c54a32a102ecf51e05a2c0");
             Message.creator(
-                    new PhoneNumber("+91-9871419150"),
+                    new PhoneNumber(phoneNumber),
                     new PhoneNumber("+15038226838"),
-                    cp.searchLocationAndVaccine().get(i))
+                    message.get(i))
                     .create();
             }
         }
@@ -40,8 +41,7 @@ class CowinSpec extends GebSpec {
 
         where:
         phoneNumber | pincode
-        "9871419150"  | "110065"
-        "7755943346"  | "110041"
+        "+91-9871419150"  | "110048"
 
     }
 }
