@@ -5,7 +5,9 @@ import com.twilio.Twilio
 import com.twilio.rest.api.v2010.account.Message
 import com.twilio.type.PhoneNumber
 import geb.spock.GebSpec
-
+import groovyx.net.http.RESTClient
+import groovy.json.JsonSlurper
+import wslite.http.*
 
 class CowinSpec extends GebSpec {
 
@@ -24,7 +26,29 @@ class CowinSpec extends GebSpec {
 
 
         then:
-ArrayList<String> message=cp.searchLocationAndVaccine()
+	ArrayList<String> message=cp.searchLocationAndVaccine()
+	def url = new URL('https://ap-south-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/test_google_sheet-mejsg/service/getCowinSlotData/incoming_webhook/webhook0')
+	def connection = url.openConnection()
+	connection.addRequestProperty("Accept", "application/json")
+	println("11")
+        connection.with {
+           doOutput = true
+           requestMethod = 'GET'
+        }
+	def respData
+	if (connection.responseCode == 200) {
+  		respData = connection.content.text
+	}	
+    	JsonSlurper slurper = new JsonSlurper()
+    	Map parsedJson = slurper.parseText(respData)
+    	String mobileNumber = parsedJson.get("mobileNo")
+    	String pinCodes = parsedJson.get("pinCodes")
+	if (pinCodes != null ) {
+    		String[] pinCodeValues = pinCodes.split(',');
+    		for(String pinCodeData : pinCodeValues) {
+      			println(pinCodeData);
+		}
+	}
         if(message!=null) {
             int numberOfMessages=message.size()
             for (int i = 0; i <numberOfMessages ; i++) {
@@ -33,7 +57,8 @@ ArrayList<String> message=cp.searchLocationAndVaccine()
             Message.creator(
                     new PhoneNumber(phoneNumber),
                     new PhoneNumber("+15038226838"),
-                    message.get(i))
+                    //message.get(i))
+		    mobileNumber)
                     .create();
             }
         }
