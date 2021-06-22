@@ -36,18 +36,21 @@ class CowinSpec extends GebSpec {
                 int numberOfMessages = message.size()
                 for (int i = 0; i < numberOfMessages; i++) {
                     println message.get(i)
-                  try {
-                      Twilio.init(
-                              "AC1ea0abaa384d67b14a8d4fdd6ee9b47e", "41de078223c54a32a102ecf51e05a2c0");
-                      Message.creator(
-                              new PhoneNumber("+"+mobileNo.get(j)),
-                              new PhoneNumber("+15038226838"),
-                              message.get(i))
-
-                              .create();
-                  }
-                    catch(Exception e){
-                        println mobileNo.get(j) +" does not exits"
+                    def mobileNumber = mobileNo.get(j).split(",");
+                    for(def mobile:mobileNumber)
+                    {
+                        try {
+                            Twilio.init(
+                                    "AC1ea0abaa384d67b14a8d4fdd6ee9b47e", "41de078223c54a32a102ecf51e05a2c0");
+                            Message.creator(
+                                    new PhoneNumber("+" + mobile),
+                                    new PhoneNumber("+15038226838"),
+                                    message.get(i))
+                                    .create();
+                        }
+                        catch (Exception e) {
+                            println mobile + " not verified"
+                        }
                     }
                 }
 
