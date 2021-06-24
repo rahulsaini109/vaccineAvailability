@@ -30,7 +30,7 @@ class CowinHomePage extends Page{
         ArrayList<String> message = new ArrayList<String>()
         for(int i=0;i<numberOfAddressLine.size();i++)
         {
-                for(int d=0;d<=slotAvailable(i).size();d++)
+                for(int d=0;d<=1;d++)
                 {
                     if(!addressLabel(i).text().contains("PAID"))
                     {

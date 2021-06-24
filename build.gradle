@@ -7,7 +7,7 @@ plugins {
 
 ext {
     // The drivers we want to use
-    drivers = ["chromeHeadless"]
+    drivers = ["chrome","chromeHeadless"]
 
     ext {
         gebVersion = '4.1'
