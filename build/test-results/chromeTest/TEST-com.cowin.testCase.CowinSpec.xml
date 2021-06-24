@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cowin.testCase.CowinSpec" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-21T13:32:16" hostname="DDC2-L-G01FPLH" time="42.994">
+<testsuite name="com.cowin.testCase.CowinSpec" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-24T05:44:18" hostname="DDC2-L-G01FPLH" time="66.992">
   <properties/>
-  <testcase name="check vaccine availability at my PinCode" classname="com.cowin.testCase.CowinSpec" time="42.994"/>
-  <system-out><![CDATA[COVISHIELD is available at GGSSS NO.1 EAST OF KAILASH center with D1
-44 and D2
-24 on date 22 Jun 2021
-91-9871419150 does not exits
-COVISHIELD is available at MH SRI NIWAS PURI CHC center with D1
-37 and D2
-3 on date 21 Jun 2021
-91-9871419150 does not exits
+  <testcase name="check vaccine availability at my PinCode" classname="com.cowin.testCase.CowinSpec" time="66.992"/>
+  <system-out><![CDATA[[110041.0, 110065.0]
+[91-9871419150, 91-7755943346, 91-9871419150, 91-9650820240]
+COVAXIN is available at GOVT COED SSS KUNWAR SINGH S1 center with D1
+0 and D2
+71 on date 24 Jun 2021
+91-9871419150
+ 91-7755943346
+COVAXIN is available at GOVT COED SSS KUNWAR SINGH S2 center with D1
+0 and D2
+99 on date 24 Jun 2021
+91-9871419150
+ 91-7755943346
 ]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 91.0.4472.19 (1bf021f248676a0b2ab3ee0561d83a59e424c23e-refs/branch-heads/4472@{#288}) on port 49024
+  <system-err><![CDATA[Starting ChromeDriver 91.0.4472.19 (1bf021f248676a0b2ab3ee0561d83a59e424c23e-refs/branch-heads/4472@{#288}) on port 37723
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-Jun 21, 2021 7:02:23 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Jun 24, 2021 11:14:23 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
-SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 ]]></system-err>
 </testsuite>
