@@ -1,0 +1,3 @@
+# vaccineAvailability
+This is the project which helps to notify people in India for the aavilability of the slot for the vaccines. This uses Cowin application though selenium script to find the slot from the website and sends SMS notifications for the slots.
+The phone number and pin code of the people are captured in a Google sheet and using Google AppScript the data is submitted to MongoDB Atlas database. From there REST API service is exposed at Realm application layer to share data which is used to send the notifactions by a groovy program integrated with selenium for finding slot and sending SMS to the people.
