@@ -41,10 +41,10 @@ class CowinSpec extends GebSpec {
                     {
                         try {
                             Twilio.init(
-                                    "AC1ea0abaa384d67b14a8d4fdd6ee9b47e", "41de078223c54a32a102ecf51e05a2c0");
+                                    "test", "test1");
                             Message.creator(
                                     new PhoneNumber("+" + mobile),
-                                    new PhoneNumber("+15038226838"),
+                                    new PhoneNumber("+19999911112"),
                                     message.get(i))
                                     .create();
                         }
