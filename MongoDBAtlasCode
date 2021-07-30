@@ -1,0 +1,20 @@
+//Retreving data from the database
+exports = function() {
+  const cowinSlots = context.services.get("mongodb-atlas").db("cowin").collection("cowin");
+  return cowinSlots.find({}, {})
+  .sort({ mobileNo: 1 })
+  .toArray()
+  .then(items => {
+   // console.log(`Successfully found ${items.length} documents.`)
+  //items.forEach(console.log)
+    return items
+  })
+  .catch(err => console.error(`Failed to find documents: ${err}`))
+}
+
+//JSON data
+id:60d6d0bb964d14d50dc15872
+pinCodes:"110065.0"
+mobileNo:"91-9999999999, 91-8888888888"
+dateOfUpdate:"2021-06-21"
+
