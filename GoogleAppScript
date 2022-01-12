@@ -1,1 +1,30 @@
 
+/****
+ * Export the events from the sheet to a MongoDB Database via Stitch
+ ****/
+function exportEventsToMongoDB() {
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = spreadsheet.getSheetByName("CowinData");
+  var headerRows = 1;  // Number of rows of header info (to skip)
+  var range = sheet.getDataRange(); // determine the range of populated data
+  var numRows = range.getNumRows(); // get the number of rows in the range
+  var data = range.getValues(); // get the actual data in an array data[row][column]
+  Logger.log(JSON.stringify(data));
+  
+  for (var i=headerRows; i<numRows; i++) {
+    var date_updated = Utilities.formatDate(new Date(data[i][2]), "IST", "yyyy-MM-dd");   
+    // Make a POST request with form data.
+    var formData = {
+      'mobileNo': data[i][0],
+      'pinCodes': data[i][1],
+      'dateOfUpdate': date_updated
+    };
+    var options = {
+      'method' : 'post',
+      'payload' : formData
+    };
+    if (true) {
+          var insertID = UrlFetchApp.fetch('https://ap-south-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/test_google_sheet-mejsg/service/GetCowinDataforNotification/incoming_webhook/webhook0', options);
+    }
+  }
+}
