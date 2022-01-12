@@ -33,10 +33,10 @@ class CowinTest extends GebReportingTest implements Job{
         cp.searchButton.click()
         if (cp.searchLocationAndVaccine("COVISHIELD") != null) {
             Twilio.init(
-                    "AC1ea0abaa384d67b14a8d4fdd6ee9b47e", "264414d67df60651b2cb8fc82240cf12");
+                    "XXX", "YYY");
             Message.creator(
-                    new PhoneNumber("+91-9871419150"),
-                    new PhoneNumber("+15038226838"),
+                    new PhoneNumber("+91-**********"),
+                    new PhoneNumber("+1**********"),
                     "Available Vaccine center :" + cp.searchLocationAndVaccine("COVISHIELD"))
                     .create();
         } else println "No Vaccine Found"
